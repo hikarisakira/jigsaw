@@ -1,8 +1,13 @@
-const path = require('path')
+import { defineConfig } from '@rspack/cli'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const baseConfig = defineConfig({
   entry: {
-    'jigsaw': './src/jigsaw'
+    jigsaw: './src/jigsaw.js'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -15,10 +20,11 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.resolve(__dirname, '../src'),
-        use: 'babel-loader'
+        use: 'builtin:swc-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
+        type: 'javascript/auto',
         use: ['style-loader', {
           loader: 'css-loader',
           options: {
@@ -29,4 +35,6 @@ module.exports = {
       }
     ]
   }
-}
+});
+
+module.exports = baseConfig;

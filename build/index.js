@@ -1,12 +1,10 @@
-// ./build/index.js
-
-const webpack = require('webpack')
-const config = require('../config/webpack.prod')
-const ora = require('ora')
+import rspack from '@rspack/core'
+import config from '../config/rspack.prod.mjs'
+import ora from 'ora'
 
 const spinner = ora('building...').start()
 
-webpack(config, (err, stats) => {
+rspack(config, (err, stats) => {
 
   spinner.stop()
   if (err) throw err
@@ -20,9 +18,9 @@ webpack(config, (err, stats) => {
     }) + '\n\n')
 
   if (stats.hasErrors()) {
-    console.log('  Build failed with errors.\n')
+    console.log(chalk.red('  Build failed with errors.\n'))
     process.exit(1)
   }
 
-  console.log('  Build complete.\n')
+  console.log(chalk.cyan('  Build complete.\n'))
 })
