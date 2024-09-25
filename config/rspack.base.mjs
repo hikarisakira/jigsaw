@@ -1,11 +1,14 @@
-import { defineConfig } from '@rspack/cli'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const baseConfig = defineConfig({
+import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin';
+
+
+
+export default {
   entry: {
     jigsaw: './src/jigsaw.js'
   },
@@ -34,7 +37,13 @@ const baseConfig = defineConfig({
         }]
       }
     ]
-  }
-});
-
-module.exports = baseConfig;
+  },
+  plugins: [
+    process.env.RSDOCTOR &&
+      new RsdoctorRspackPlugin({
+        mode: 'brief',
+        reportDir: '../doctorReport',
+        port: 3000,
+      }),
+  ].filter(Boolean),
+};

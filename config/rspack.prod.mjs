@@ -14,7 +14,7 @@ const { version } = packageJson;
 export default merge(baseConfig, {
   output: {
     clean: true,
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: '[name].min.js',
   },
   plugins: [
@@ -22,4 +22,3 @@ export default merge(baseConfig, {
   ],
   mode: 'production'
 })
-console.log('Merged Config:', mergedConfig);

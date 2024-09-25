@@ -1,19 +1,23 @@
 {
-  "name": "jigsaw",
-  "version": "2.0.0rc1-rspack",
-  "type": "module",
-  "scripts": {
-    "dev": "rspack serve --config config/rspack.dev.mjs",
-    "build": "rspack build --config build/index.js"
-  },
-  "devDependencies": {
-    "@rspack/cli": "^1.0.7",
-    "@rspack/core": "^1.0.7",
-    "css-loader": "^7.1.2",
-    "ora": "^8.1.0",
-    "style-loader": "^4.0.0",
-    "webpack-merge": "^6.0.1"
-  },
-  "license": "MIT",
-  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
+	"name": "jigsaw",
+	"version": "2.0.0rc1-rspack",
+	"type": "module",
+	"scripts": {
+		"dev": "rspack serve --config config/rspack.dev.mjs",
+		"build": "node build",
+		"dev:rsdoctor": "RSDOCTOR=true rspack serve --config config/rspack.dev.mjs",
+		"build:rsdoctor": "RSDOCTOR=true node build"
+	},
+	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "^0.4.4",
+		"@rspack/cli": "^1.0.7",
+		"@rspack/core": "^1.0.7",
+		"cross-env": "^7.0.3",
+		"css-loader": "^7.1.2",
+		"ora": "^8.1.0",
+		"style-loader": "^4.0.0",
+		"webpack-merge": "^6.0.1"
+	},
+	"license": "MIT",
+	"packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
 }

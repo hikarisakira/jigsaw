@@ -211,11 +211,12 @@ class Jigsaw {
 
     let originX, originY, trail = [], isMouseDown = false
 
-    const handleDragStart = function (e) {
+    const handleDragStart = (e) => {
       originX = e.clientX || e.touches[0].clientX
       originY = e.clientY || e.touches[0].clientY
       isMouseDown = true
     }
+
     const width = this.width
     const handleDragMove = (e) => {
       if (!isMouseDown) return false
@@ -257,6 +258,7 @@ class Jigsaw {
         setTimeout(this.reset.bind(this), 1000)
       }
     }
+
     this.slider.addEventListener('mousedown', handleDragStart)
     this.slider.addEventListener('touchstart', handleDragStart)
     this.block.addEventListener('mousedown', handleDragStart)
