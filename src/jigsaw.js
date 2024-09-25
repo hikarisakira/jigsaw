@@ -1,3 +1,5 @@
+// ./src/jigsaw.js
+
 import styles from './jigsaw.css'
 
 const w = 310 // canvas宽度
